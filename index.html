@@ -423,9 +423,9 @@
 
         /* Header & Navigation */
         header {
-            background: var(--dark);
+            background: var(--light);
             color: white;
-            padding: 0rem 0;
+            padding: 0.5rem 0;
             position: sticky;
             top: 0px;
             z-index: 1000;
@@ -464,10 +464,10 @@
         }
         
         nav ul li a {
-            color: var(--light);
+            color: var(--dark);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 0.5rem;
+            padding: 0.2rem 0.5rem;
             border-radius: 1px;
             transition: all 0.3s ease;
         }
@@ -475,7 +475,7 @@
         nav ul li a:hover, nav ul li a.active {
             color: var(--dark);
             background-color: var(--light);
-            border: 2px solid var(--dark);
+            border: 2px solid var(--light);
             border-radius: 20px;
         }
         
@@ -1346,7 +1346,7 @@
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background-color: var(--accent);
+            background-color: var(--light);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1641,6 +1641,8 @@
             
             .mobile-menu-btn {
                 display: block;
+		padding:.1rem;
+		color: var(--dark);
             }
             
             .hero h2 {
@@ -1821,16 +1823,8 @@
         <div class="container header-content">
             <div class="logo">
                     <i>
-<img src="./1.png" alt="Aana Corporation" width="112" height="40">
+<img src="./1.png" alt="Aana Corporation" width="168" height="60">
 </i>
-<div class="simple-search">
-    <form action="https://www.google.com/search" method="get" target="_blank">
-        <input type="text" name="q" placeholder="Search..." required>
-        <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
-</div>
-            </div>
-
             <nav id="mainNav">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
@@ -1843,18 +1837,25 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            
+
+<div class="simple-search">
+    <form action="https://www.google.com/search" method="get" target="_blank">
+        <input type="text" name="q" placeholder="Search..." required>
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
             <div class="user-info" id="userInfo">
                 <div class="user-avatar" id="userAvatar">U</div>
                 <span id="userName">User</span>
                 <button class="btn-secondary" id="logoutBtn" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;">Logout</button>
             </div>
-            
+            <button class="cta-button" id="loginBtnHeader" style="padding: 0.5rem 1.5rem;">Login</button>
+           
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-            
-            <button class="cta-button" id="loginBtnHeader" style="padding: 0.5rem 1.5rem;">Login</button>
+            </div>
         </div>
     </header>
 
@@ -2408,7 +2409,7 @@
                 navUl.style.top = '100%';
                 navUl.style.left = '0';
                 navUl.style.width = '100%';
-                navUl.style.backgroundColor = 'var(--dark)';
+                navUl.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
                 navUl.style.padding = '1rem 0';
             }
         });
@@ -3912,4 +3913,3 @@
     </script>
 </body>
 </html>
-
