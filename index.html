@@ -1531,7 +1531,7 @@
 
 	.simple-search {
 	    flex: 1;
-	    max-width: 300px;
+	    max-width: 200px;
 	    margin: 0 20px;
 	}
 
@@ -1563,13 +1563,6 @@
 	    background: var(--dark);
 	}
 
-	@media (max-width: 992px) {
-	    .simple-search {
-	        order: 3;
-	        width: 100%;
-	        max-width: 100%;
-	        margin: 15px 0;
-	    }
 	}
         
         /* Currency */
@@ -1606,6 +1599,14 @@
                 gap: 15px;
             }
         }
+
+	@media (max-width: 992px) {
+	    .simple-search {
+	        order: 3;
+	        width: 50%;
+	        max-width: 50%;
+	        margin: 5px 0;
+	    }
 
         @media (max-width: 480px) {
             #oanda_ecc iframe {
@@ -1830,17 +1831,15 @@
         <div class="container header-content">
             <div class="logo">
                     <i>
-<a href="#home">
-<img src="./1.png" alt="Aana Corporation" width="225" height="80">
-</a>
+<img src="./1.png" alt="Aana Corporation" width="112" height="40">
 </i>
-            </div>
 <div class="simple-search">
     <form action="https://www.google.com/search" method="get" target="_blank">
         <input type="text" name="q" placeholder="Search..." required>
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
 </div>
+            </div>
 
             <nav id="mainNav">
                 <ul>
@@ -3922,5 +3921,4 @@
         addAdminExportButton();
     </script>
 </body>
-
 </html>
