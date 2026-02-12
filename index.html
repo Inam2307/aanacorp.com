@@ -183,8 +183,7 @@
     // Fetch weather data
     async function fetchWeatherData(city = DEFAULT_CITY, country = DEFAULT_COUNTRY) {
         try {
-            const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${WEATHER_API_KEY}`
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=${WEATHER_API_KEY}`
             );
             
             if (!response.ok) {
@@ -397,6 +396,35 @@
             border-bottom: 2px solid var(--primary);
             border-left: 2px solid var(--primary);
             border-right: 2px solid var(--primary);
+            position: relative; /* Added for background overlay */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Creates parallax effect */
+        }
+        
+        /* Dark overlay for all sections except hero/slideshow which already has gradient */
+        section:not(.slideshow-container):not(.hero)::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85); /* Light overlay for readability */
+            z-index: 0;
+        }
+        
+        /* Ensure content stays above overlay */
+        section > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Special overlay for dark text sections to maintain contrast */
+        #about::before, #timeline::before, #services::before, #categories::before, 
+        #calculator::before, #contact::before, #oanda_ecc::before {
+            background: rgba(255, 255, 255, 0.9);
         }
 
         h2 {
@@ -409,7 +437,7 @@
 	    text-decoration-color: var(--dark);
         }
 
-        h9 {
+        h6 {
             font-size: 2.5rem;
             margin-bottom: 10px;
             color: var(--secondary);
@@ -426,7 +454,7 @@
             background: var(--light);
             color: white;
             padding: 0.5rem 0;
-            position: sticky
+            position: sticky;
             top: 0px;
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -761,12 +789,14 @@
         .about {
             border-top: 2px solid var(--primary);
             padding: 2rem 0;
+            background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
         }
 
         .about-content {
+            flex-direction: column;
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .about-text {
@@ -798,16 +828,17 @@
             display: block;
         }
 
+
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
             margin-top: 2rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem;
+            padding: 1rem;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 15px;
             transition: transform 0.3s;
@@ -837,13 +868,13 @@
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: bold;
             color: #1e3c72;
             display: block;
         }
 
-        .stat-label {
+            .stat-label {
             color: #666;
             font-size: 1.1rem;
         }
@@ -855,13 +886,13 @@
 
         .mission-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+            gap: 1.5rem;
         }
 
         .mission-card {
             background: white;
-            padding: 2.5rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
@@ -882,13 +913,13 @@
         /* Team */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .team-card {
             text-align: center;
-            padding: 2.5rem;
+            padding: 1.5rem;
             background: white;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -949,7 +980,7 @@
         .timeline-content {
             width: 400px;
             background: white;
-            padding: 0rem;
+            padding: 0.2rem;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             position: relative;
@@ -1234,6 +1265,7 @@
             padding: 2rem 0;
             background-color: var(--light);
             text-align: left;
+            background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
         }
 
         .contact-grid {
@@ -1297,6 +1329,7 @@
         /* Services Section */
         .service {
             background-color: white;
+            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
         }
 
         .services-grid {
@@ -1356,6 +1389,7 @@
         /* Categories Section */
         .categories {
             background-color: white;
+            background-image: url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
         }
 
         .categories-grid {
@@ -1366,7 +1400,7 @@
         }
 
         .category-card {
-            background-color: #E7E7E7;
+            background-color: rgba(231, 231, 231, 0.9);
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -1419,6 +1453,11 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
+
+	.contact-grid {
+	    grid-template-columns: 1fr;
+	    gap: 2rem;
+	}
         
         .contact-icon {
             font-size: 2rem;
@@ -1427,44 +1466,52 @@
         }
         
         .social-links {
+            position: fixed;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 300px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50px;
             display: flex;
-            margin-top: 1rem;
-	    position:fixed;
-	    bottom:0px;
-	    right:1155px;
-	    color:blue;
-            backdrop-filter: blur(5px);
-	    border-radius:10px;
-	    text-align:center;
-            font-size:30px;
-        }
-
-        .social-links1 {
+            justify-content: space-around;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+         }
+    
+          .social-links1 {
+            position: fixed;
+            bottom: 2px;
+            left: 92%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 200px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
             display: flex;
-            margin-top: 1rem;
-	    position:fixed;
-	    bottom:-5px;
-	    left:1190px;
-	    color:#006F90;
-            backdrop-filter: blur(5px);
-	    border-radius:10px;
-	    text-align:center;
-            font-size:30px;
-        }
+            justify-content: space-around;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+          }
 
-        .social-links a {
-            width: 30px;
-            height: 40px;
-            border-radius: 50%;
-            color: var(--dark);
-        }
+          .social-links .fa-whatsapp {
+              color: green;
+          }
+    
+          .social-links a {
+              font-size: 22px;
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              color: var(--dark);
+          }
 
-        .social-links a:hover {
-            background-color: transparent;
-            transform: translateY(-3px);
-        }
+          .social-links a:hover {
+              background-color: transparent;
+              transform: translateY(-3px);
+          }
 
-	/* Whatsapp Trigger Button */
         .float{
 	    position:fixed;
 	    width:40px;
@@ -1493,7 +1540,6 @@
 
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--dark);
             font-size: 0.9rem;
@@ -1553,8 +1599,6 @@
 	    background: var(--dark);
 	}
 
-	}
-        
         /* Currency */
         #oanda_ecc {
             margin: 20px 0;
@@ -1568,6 +1612,8 @@
         #oanda_ecc iframe {
             border-radius: 15px;
             display: block;
+            width: 100% !important;
+            height: 200px !important;
         }
 
         .features {
@@ -1576,6 +1622,201 @@
             gap: 20px;
             margin: 30px 0;
         }
+
+        iframe[src*="google.com/maps"] {
+            width: 100% !important;
+            height: 150px !important;
+        }
+
+        /* ----- MAIN CONTAINER – RESPONSIVE CARD WITH BACKGROUND IMAGE ----- */
+        .heritage-card {
+            position: relative;
+            width: 100%;
+            max-width: 1300px;      /* comfortable reading width */
+            margin: 0 auto;
+            border-radius: 32px;    /* soft, modern edge – subtle contrast */
+            overflow: hidden;       /* background corners clipped, image respects border-radius */
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.18);
+            transition: box-shadow 0.2s ease;
+            background-color: transparent;  /* let image show */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* background image placed as pseudo‑element for full flexibility & text overlay */
+        .heritage-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img.freepik.com/free-photo/empty-financial-department-office_482257-112016.jpg');
+            background-size: cover;
+            background-position: center 30%;   /* aligns desks/modern office feel */
+            background-repeat: no-repeat;
+            filter: brightness(0.65) saturate(1.2);  /* deepen image, text stays readable */
+            transition: filter 0.25s ease;
+            will-change: transform;
+            pointer-events: none;   /* ensures clicks pass through */
+            z-index: 1;
+        }
+
+        /* semi-transparent overlay — improves text legibility while preserving the background */
+        .heritage-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, rgba(10, 20, 30, 0.55) 0%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* ----- TEXT CONTENT – LAYERED ABOVE BACKGROUND + OVERLAY ----- */
+        .content {
+            position: relative;
+            z-index: 10;            /* above ::before and ::after */
+            color: white;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            backdrop-filter: blur(1px);  /* subtle glassmorphism – enhances depth, doesn’t hide image */
+            -webkit-backdrop-filter: blur(1px);
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        /* typographic elegance – clean, powerful, readable */
+        .pre-title {
+            font-size: 0.95rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+            max-width: 900px;
+        }
+
+        .highlight {
+            background: linear-gradient(145deg, #FFD966, #FFC107);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-weight: 750;
+        }
+
+        .subhead {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #FEF9E7;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            max-width: 800px;
+        }
+
+        .story-text {
+            font-size: 1.18rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.96);
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            max-width: 850px;
+        }
+
+        .vertical-sectors {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            font-weight: 500;
+            color: #FFEAA7;
+            text-shadow: 0 2px 7px #0000004d;
+        }
+
+        .sector-tag {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 0.35rem 1.1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.03em;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        /* subtle divider — contemporary */
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFB347, #FFD700);
+            border-radius: 4px;
+            margin: 0.5rem 0 0.8rem 0;
+        }
+
+        /* anchor for legacy detail */
+        .legacy-note {
+            font-size: 1rem;
+            margin-top: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .pill {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            border: 0.5px solid rgba(255,255,255,0.3);
+            font-weight: 400;
+        }
+
+        /* responsive fine-tuning */
+        @media (max-width: 700px) {
+            body { padding: 1rem; }
+            .content { padding: 2.2rem 1.8rem; }
+            h1 { font-size: 2.1rem; }
+            .subhead { font-size: 1.15rem; }
+            .story-text { font-size: 1.05rem; }
+        }
+
+        @media (max-width: 480px) {
+            .content { padding: 1.8rem 1.2rem; }
+            h1 { font-size: 1.8rem; }
+            .pre-title { letter-spacing: 0.2em; font-size: 0.8rem; }
+            .story-text { font-size: 0.98rem; }
+            .sector-tag { padding: 0.2rem 0.8rem; font-size: 0.8rem; }
+        }
+
+        /* optional JS interaction: lighten filter on hover (professional, subtle) */
+        .heritage-card.enhanced::before {
+            filter: brightness(0.72) saturate(1.25);
+            transition: filter 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* legacy brand mention – computer era */
+        .small-emblem {
+            font-variant: small-caps;
+            letter-spacing: 1px;
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -1713,8 +1954,572 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+@media (min-width: 576px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .team-grid, .mission-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .about-content {
+        flex-direction: row;
+        gap: 3rem;
+    }
+    
+    .about-text {
+        text-align: left;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .timeline::before {
+        left: 50%;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        padding-left: 50%;
+        padding-right: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+        padding-right: 50%;
+        padding-left: 0;
+    }
+    
+    .timeline-content {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .calc-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .social-links {
+        left: auto;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .float {
+        left: auto;
+        right: 20px;
+        bottom: 80px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 30px;
+    }
+    
+    nav ul {
+        display: flex !important;
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+    
+    .mission-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stat-item {
+        padding: 2rem;
+    }
+    
+    .social-links {
+        right: 30px;
+    }
+    
+    .float {
+        right: 30px;
+    }
+    
+    #oanda_ecc iframe {
+        width: 555px !important;
+        height: 260px !important;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1300px;
+    }
+    
+    .hero h2 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 900px;
+    }
+}
+
+/* Specific fixes for mobile devices */
+@media (max-width: 767px) {
+    /* Header & Navigation */
+    header {
+        padding: 0.5rem 0;
+    }
+    
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+        order: 2;
+    }
+    
+    #loginBtnHeader {
+        order: 3;
+        padding: 0.3rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 1rem 0;
+        z-index: 1000;
+    }
+    
+    nav ul.show {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 0.8rem 1rem;
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    /* Slideshow */
+    .slideshow-container {
+        height: 400px;
+    }
+    
+    .slide-content {
+        margin: 0 auto;
+        max-width: 90%;
+        padding: 20px;
+    }
+    
+    .slide-content h6 {
+        font-size: 1.8rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    /* About Section */
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .about-text {
+        text-align: center;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    /* Timeline */
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        margin: 2rem 0;
+    }
+    
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        padding: 0 0 0 50px;
+        justify-content: flex-start;
+    }
+    
+    .timeline-content {
+        width: 100%;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -20px;
+        right: auto;
+        border-left: none;
+        border-right: 15px solid white;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+    }
+    
+    /* Services */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    /* Categories */
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Calculator */
+    .calc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .calc-info {
+        margin-bottom: 1.5rem;
+    }
+    
+    .calc-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Social Links & WhatsApp */
+    .social-links {
+        position: fixed;
+        bottom: 20px;
+        right: 0px;
+        left: 220px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 999;
+    }
+    
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+    
+    .float {
+        position: fixed;
+        bottom: 80px;
+        right: 25px;
+        left: auto;
+        width: 50px;
+        height: 50px;
+        font-size: 30px;
+        z-index: 999;
+    }
+    
+    .my-float {
+        margin-top: 8px;
+    }
+    
+    /* Currency Converter */
+    #oanda_ecc iframe {
+        width: 100% !important;
+        height: 250px !important;
+    }
+    
+    /* Team & Mission */
+    .team-grid, .mission-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .mission-card, .team-card {
+        padding: 1.5rem;
+    }
+    
+    /* Typography */
+    h2, h6 {
+        font-size: 1.8rem;
+    }
+    
+    /* Results section */
+    .results {
+        padding: 15px;
+    }
+    
+    .result-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575px) {
+    /* Header fixes */
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    
+    #loginBtnHeader {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Hero adjustments */
+    .hero {
+        padding: 2rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+    
+    /* Slideshow */
+    .slideshow-container {
+        height: 350px;
+    }
+    
+    .slide-content h6 {
+        font-size: 1.5rem;
+    }
+    
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* Stats */
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    /* Calculator form */
+    .calculator-container {
+        padding: 1rem;
+    }
+    
+    .form-group input, 
+    .form-group select {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* Contact form */
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    /* GST Results */
+    .results {
+        padding: 10px;
+    }
+    
+    .result-item {
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+    }
+    
+    /* Currency Converter */
+    #oanda_ecc iframe {
+        height: 200px !important;
+    }
+    
+    /* Footer */
+    .copyright h3 {
+        font-size: 0.8rem;
+    }
+}
+
+/* Fix for landscape mode on mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .slideshow-container {
+        height: 300px;
+    }
+    
+    .hero {
+        padding: 1.5rem 0;
+    }
+    
+    .section {
+        padding: 40px 0;
+    }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 768px) and (max-width: 991px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mission-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .social-links {
+        flex-direction: row;
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 767px) {
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 767px) {
+    button,
+    .cta-button,
+    .btn,
+    nav ul li a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    input, select, textarea {
+        font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+}
+
+/* Adjust timeline for very small screens */
+@media (max-width: 480px) {
+    .timeline-content {
+        padding: 1rem;
+    }
+    
+    .timeline-date {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+/* Fix for the OANDA widget on different screens */
+@media (max-width: 767px) {
+    #oanda_ecc {
+        margin: 15px 0;
+    }
+    
+    #oanda_ecc iframe {
+        height: 220px !important;
+    }
+}
+</style>
 </head>
+<body>
 <body>
 	<div class="social-links" class="float">
         	<a href="https://www.facebook.com/profile.php?id=61568999984312"><i style="color:#006F90" class="fab fa-facebook-f"></i></a>
@@ -1823,7 +2628,7 @@
         <div class="container header-content">
             <div class="logo">
                     <i>
-<img src="./1.png" alt="Aana Corporation" width="112" height="40">
+<img src="./1.png" alt="Aana Corporation" width="146" height="52">
 </i>
             <nav id="mainNav">
                 <ul>
@@ -1864,56 +2669,56 @@
 
         <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');">
             <div class="slide-content">
-                <h9>Your Global Trusted Partner in Diverse Business Ventures</h9>
+                <h6>Your Global Trusted Partner in Diverse Business Ventures</h6>
                 <p>Providing a wide range of services including IT & Mobile accessories, Food Products, Export-Import business, Real Estate, MBBS Abroad & Admission in India, CSC Services, Banking, Legal services, and premium quality food products & spices.</p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>Premium Spices & Food Products</h9>
+                <h6>Premium Spices & Food Products</h6>
                 <p>Discover our wide range of authentic spices, superfood powders, grains, and pulses sourced from the finest farms across India.</p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://plus.unsplash.com/premium_photo-1677535536188-84ae32f3f309?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>Export & Import Solutons</h9>
+                <h6>Export & Import Solutons</h6>
                 <p>Global trading of food products, spices, and commodities with seamless logistics and documentation support.</p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1426024084828-5da21e13f5dc??ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>IT & Mobile Solutons</h9>
+                <h6>IT & Mobile Solutons</h6>
                 <p>Wide range of computer peripherals, mobile accessories, and IT solutions for personal and business needs.</p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1623631484725-fef26b75b402?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>Admission Consultant</h9>
+                <h6>Admission Consultant</h6>
                 <p>Guidance and assistance for medical education abroad and admission to Indian medical colleges and also other courses.</p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>Real Estate Services</h9>
+                <h6>Real Estate Services</h6>
                 <p>Property buying, selling, renting, and consultation services for residential and commercial properties.</p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1605553378313-22d0dc541393?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>Pilgrimage Services</h9>
+                <h6>Pilgrimage Services</h6>
                 <p>Hajj & Umrah services. We also organize other pilgrimage tours to holy sites in countries such as Iran, Iraq, and India. </p>
             </div>
         </div>
 
         <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div class="slide-content">
-                <h9>Comprehensive Business Services</h9>
+                <h6>Comprehensive Business Services</h6>
                 <p>All Common Service Center facilities including banking, insurance, and government schemes.</p>
                 <!--<button>Explore Services</button>-->
             </div>
@@ -1931,15 +2736,52 @@
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="about" id="about" style="background-image: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
                     <h2>About Aana Corporation</h2>
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>From Humble Beginnings to Industry Leadership</h3>
-                    <p style="text-align:justify">Founded in the heart of Muzaffarpur, Bihar, India. Aana Corporation (formerly Computer Era) began as a small trading business in computer accessories. Over the years, our unwavering commitment to quality, customer satisfaction, and innovation has transformed us into a multi-vertical business powerhouse.</p>
-                    <p style="text-align:justify">Today, we operate across 9 diverse sectors, employing cutting-edge technology and ethical business practices to deliver exceptional value to our clients and partners worldwide.</p>
-                    <p style="text-align:justify">Based in Muzaffarpur, Bihar, we serve clients across India and internationally with our wide range of business offerings.</p>
+    <div class="heritage-card" id="aanaHeritageCard">
+        <!-- ALL TEXT is layered over background image (set in CSS ::before) -->
+        <div class="content">
+            <div class="pre-title">🍃 EST. 2001 · FORMERLY COMPUTER ERA</div>
+            <h1>From Humble Beginnings <br class="hide-mobile"><span class="highlight">to Industry Leadership</span></h1>
+            <div class="divider"></div>
+            <div class="subhead">
+                Founded in the heart of Muzaffarpur, Bihar, India.
+            </div>
+            <div class="story-text">
+                <span style="font-weight: 600;">Aana Corporation</span> (formerly Computer Era) began as a small trading business in computer accessories. Over the years, our unwavering commitment to quality, customer satisfaction, and innovation has transformed us into a multi-vertical business powerhouse.
+            </div>
+            <div class="story-text" style="margin-bottom: 0.2rem;">
+                Today, we operate across <strong style="color:#FFE270;">9 diverse sectors</strong>, employing cutting-edge technology and ethical business practices to deliver exceptional value to our clients and partners worldwide.
+            </div>
+            <div class="story-text" style="margin-bottom: 0.2rem;">
+                Based in Muzaffarpur, Bihar, we serve <strong style="color:#FFE270;">clients across India and internationally</strong> with our wide range of business offerings.
+            </div>
+            
+            <!-- 9 sectors represented as visual tags – dynamic & clean -->
+            <div class="vertical-sectors">
+                <span class="sector-tag">⚡ IT & HARDWARE</span>
+                <span class="sector-tag">🌾 AGRI-TECH</span>
+                <span class="sector-tag">🏦 FINTECH</span>
+                <span class="sector-tag">📡 TELECOM</span>
+                <span class="sector-tag">🏭 MANUFACTURING</span>
+                <span class="sector-tag">📚 ED-TECH</span>
+                <span class="sector-tag">🛒 E-COMMERCE</span>
+                <span class="sector-tag">⚕️ HEALTHCARE</span>
+                <span class="sector-tag">🌍 LOGISTICS</span>
+            </div>
+
+            <!-- additional heritage nuance with quality mention and global presence -->
+            <div class="legacy-note">
+                <span class="pill">🇮🇳 Rooted in Bihar · serving worldwide</span>
+                <span class="pill">⭐ 4.9+ customer rating</span>
+                <span class="pill">🌱 CERTIFIED</span>
+            </div>
+            <!-- tiny footnote – fully respects the brief -->
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 0.8rem; letter-spacing: 0.3px; backdrop-filter: blur(2px); display: inline-block; padding: 0.2rem 1rem 0.2rem 0; border-radius: 0;">
+                📍 Muzaffarpur · global footprint · ethics first
+            </p>
+        </div>
+    </div>
                     
                     <div class="stats">
                         <div class="stat-item">
@@ -1960,9 +2802,6 @@
                         </div>
                     </div>
 <!--                    </br><a href="#contact" class="cta-button">Contact Us</a>-->
-                </div>
-                <div class="about-image">
-                    <img src="https://img.freepik.com/free-photo/empty-financial-department-office_482257-112016.jpg?semt=ais_hybrid&w=740&q=80" alt="Aana Corporation Office">
                 </div>
             </div>
         </div>
@@ -2011,7 +2850,7 @@
     </section>
 
         <!-- Timeline -->
-        <section id="timeline" class="section">
+        <section id="timeline" class="section" style="background-image: url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <h2>Our Journey</h2>
             <p style="text-align: center">From our humble beginnings in 2001 to our vision for the future, explore the journey of growth, diversification, and innovation that defines Aana Corporation.</p>
             <div class="timeline">
@@ -2061,7 +2900,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services-section" id="services">
+    <section class="services-section" id="services" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="container">
                 <h2>Our Comprehensive Services</h2>
             <div class="services-grid">
@@ -2122,7 +2961,7 @@
     </section>
 
     <!-- Categories Section -->
-    <section class="categories" id="categories">
+    <section class="categories" id="categories" style="background-image: url('https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="container">
             <h2>Our Product Categories</h2>
             <div class="categories-grid">
@@ -2132,7 +2971,7 @@
     </section>
 
      <!-- GST Calculator -->
-    <section class="contact" id="calculator">
+    <section class="contact" id="calculator" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="container">
             <h2>GST Calculator</h2>
             <p class="about-text">Calculate GST with HSN Code Lookup & Currency Converter</p>
@@ -2215,65 +3054,18 @@
                 </div>
             </div>
 
-    <section class="contact" id="oanda_ecc">
+    <section class="contact" id="oanda_ecc" style="background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div>
         	<h2 style="color: var(--accent); align-text:center; font-size: 2.3em"> 💰OANDA Currency Converter</h2>
-                <script src="https://www.oanda.com/embedded/converter/get/b2FuZGFlY2N1c2VyLy9kZWZhdWx0/?lang=en"></script>
 	    </div>
           </div>
         </div>
       </div>
     </section>
+                <script src="https://www.oanda.com/embedded/converter/get/b2FuZGFlY2N1c2VyLy9kZWZhdWx0/?lang=en"></script>
     </section>
 
-    <!-- Contact Section 
-    <section class="contact" id="contact">
-            <h2>Contact Us</h2>
-        <div class="container">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Address</h3>
-                    <p>Ali Mirza Road, Pakki Sarai<br>Muzaffarpur-842001<br>Bihar, India</p>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Google Map</h3>
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223.88657910510852!2d85.39834080228624!3d26.12550168017887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed1058f028f3d9%3A0xf7c49a6001c0b2c3!2sAANA%20CORPORATION!5e0!3m2!1sen!2sin!4v1768309765614!5m2!1sen!2sin" width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p><a href="mailto:aanacorp@gmail.com">aanacorp@gmail.com</a></p>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Contact Number</h3>
-                    <p><a href="tel:+919939187994">+91 99391 87994</a></p>
-                </div>
-            </div>
-
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="mailto:aanacorp@gmail.com?subject=Business Inquiry&body=Hello Aana Corporation, I would like to inquire about your services." class="cta-button">
-                    <i class="fas fa-paper-plane"></i> Send Email Inquiry
-                </a>
-            </div>
-        </div>
-    </section>-->
-
-    <section class="contact" id="contact">
+    <section class="contact" id="contact" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="container">
                 <h2>Contact Us</h2>
                 <p class="about-text">Get in touch with our team for any inquiries</p>
@@ -2311,8 +3103,12 @@
                     <p><a href="tel:+919939187994">+91 99391 87994</a></p>
                 </div>
                 </div>
+
                 <div class="contact-form">
                     <h3 style="color: var(--dark)">Send Us a Message</h3>
+            <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-card">
                     <form id="contactForm" action="mailto:aanacorp@gmail.com" method="post" enctype="text/plain">
                         <div class="form-group">
                             <label for="name">Your Name</label>
@@ -2326,6 +3122,9 @@
                                 <label for="phone"> Phone Number</label>
                                 <input type="tel" id="phone" name="phone" required="">
                         </div>
+                </div>
+
+                <div class="contact-card">
                         <div class="form-group">
                             <label for="service">Service Interested In</label>
                             <select id="service" name="service">
@@ -2348,11 +3147,12 @@
                         <button type="submit" class="cta-button" style="color:#2d4059">Send Message</button>
                     </form>
                 </div>
+                </div>
+            </div>
             </div>
     <!-- Footer -->
             <div class="copyright">
                 <h3>&copy; 2026 Aana Corporation. All rights reserved.</h3>
-            </div>
         </div>
     </section>
 
@@ -3655,67 +4455,6 @@
             // 2. The server would use the service account credentials to authenticate with Google Drive API
             // 3. It would append the data to a CSV file in the specified Google Drive
             
-            // Example of what the backend code might look like (Node.js):
-            /*
-            const { google } = require('googleapis');
-            const serviceAccount = require('./service-account-key.json');
-            
-            async function saveToDrive(data) {
-                const auth = new google.auth.JWT({
-                    email: serviceAccount.client_email,
-                    key: serviceAccount.private_key,
-                    scopes: ['https://www.googleapis.com/auth/drive.file']
-                });
-                
-                const drive = google.drive({ version: 'v3', auth });
-                
-                // Find or create the CSV file
-                let fileId = await findFileId(drive, 'login_details.csv');
-                
-                if (!fileId) {
-                    // Create new file
-                    const fileMetadata = {
-                        name: 'login_details.csv',
-                        mimeType: 'text/csv'
-                    };
-                    
-                    const file = await drive.files.create({
-                        resource: fileMetadata,
-                        media: {
-                            mimeType: 'text/csv',
-                            body: 'Action,Name,Email,Timestamp,UserAgent\n'
-                        },
-                        fields: 'id'
-                    });
-                    
-                    fileId = file.data.id;
-                }
-                
-                // Append data to file
-                const csvRow = `${data.action},${data.name || ''},${data.email},${data.timestamp},${data.userAgent}\n`;
-                
-                // Get current content
-                const fileContent = await drive.files.get({
-                    fileId: fileId,
-                    alt: 'media'
-                });
-                
-                // Append new row
-                const newContent = fileContent.data + csvRow;
-                
-                // Update file
-                await drive.files.update({
-                    fileId: fileId,
-                    media: {
-                        mimeType: 'text/csv',
-                        body: newContent
-                    }
-                });
-                
-                return true;
-            }
-            */
-            
             // For this demo, we'll just log to console
             console.log('Login data to save to Google Drive:', data);
             
@@ -3910,6 +4649,43 @@
 
         // Initialize admin export button
         addAdminExportButton();
+
+        // Web Share API support for mobile
+        if (navigator.share) {
+            const shareData = {
+                title: 'Aana Corporation',
+                text: 'Your Global Trusted Partner in Diverse Business Ventures',
+                url: window.location.href
+            };
+
+            // Add share button dynamically
+            const shareBtn = document.createElement('button');
+            shareBtn.className = 'share-btn';
+            shareBtn.innerHTML = '<i class="fas fa-share-alt"></i>';
+            shareBtn.style.cssText = `
+                position: fixed;
+                bottom: 10px;
+                left: 20px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: var(--primary);
+                color: white;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            `;
+            shareBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Error sharing:', err);
+                }
+            });
+            document.body.appendChild(shareBtn);
+        }
     </script>
 </body>
 </html>
