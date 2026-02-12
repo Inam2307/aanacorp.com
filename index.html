@@ -1468,7 +1468,7 @@
         .social-links {
             position: fixed;
             bottom: 2px;
-            left: 50%;
+            left: 87%;
             transform: translateX(-50%);
             width: 90%;
             max-width: 300px;
@@ -1480,21 +1480,6 @@
             z-index: 999;
          }
     
-          .social-links1 {
-            position: fixed;
-            bottom: 2px;
-            left: 92%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 200px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 999;
-          }
-
           .social-links .fa-whatsapp {
               color: green;
           }
@@ -1515,17 +1500,6 @@
         .float{
 	    position:fixed;
 	    width:40px;
-	    height:40px;
-	    bottom:15px;
-	    color:green;
-	    border-radius:50px;
-	    text-align:center;
-            font-size:40px;
-     	}
-
-        .float1{
-	    position:fixed;
-	    width:30px;
 	    height:40px;
 	    bottom:15px;
 	    color:green;
@@ -1601,11 +1575,11 @@
 
         /* Currency */
         #oanda_ecc {
-            margin: 20px 0;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 4px solid var(--primary);
+<!--            margin: 20px 0;-->
+<!--            border-radius: 15px;-->
+<!--            border: 4px solid var(--primary);-->
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
             position: relative;
         }
 
@@ -2530,28 +2504,6 @@
 		<a href="https://api.whatsapp.com/send?phone=+919939187994&text=Hello!%20Aana%20Corporation,%20I%20would%20like%20to%20know%20more%20about%20your%20services"><i style="color:green" class="fa fa-whatsapp my-float"></i></a>
 	</div>
 
-	<div class="social-links1" class="float1">
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-    "symbols": [
-      {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
-      {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-      {"proName": "BSE:SENSEX", "title": "SENSEX"},
-      {"proName": "NSE:NIFTY", "title": "NIFTY 50"}
-    ],
-    "showSymbolLogo": true,
-    "colorTheme": "light",
-    "isTransparent": true,
-    "displayMode": "adaptive",
-    "locale": "en"
-  }
-  </script>
-</div>
-	</div>
-
-
     <!-- Authentication Modal -->
     <div class="auth-modal" id="authModal">
         <div class="auth-container">
@@ -3022,12 +2974,6 @@
                 <button class="btn-clear" onclick="clearAll()">Clear All</button>
             </div>
             </div>
-                    <div class="gst-breakdown">
-                        <h3  style="color:var(--dark)"><i class="fas fa-info-circle"></i> GST Breakdown</h3>
-                        <div class="gst-rate-tags">
-                            <div class="gst-tag">GST 0% - Essential Goods<br>GST 5% - Essential Goods<br>GST 12% - Some Standard Item<br>GST 18% - Standard Rate<br>GST 28% - Luxury Items<br>GST 40% - Sin Items</div>
-                        </div>
-                </div>
                 </div>
                 <div class="contact-form">
                 <h3 style="color:var(--dark)"><i class="fas fa-chart-pie"></i> Calculation Results</h3>
@@ -3053,6 +2999,13 @@
                     <span id="totalAmt">₹0.00</span>
                 </div>
             </div>
+                    <div class="gst-breakdown">
+                        <h3  style="color:var(--dark)"><i class="fas fa-info-circle"></i> GST Breakdown</h3>
+                        <div class="gst-rate-tags">
+                            <div class="gst-tag">GST 0% - Essential Goods<br>GST 5% - Essential Goods<br>GST 12% - Some Standard Item<br>GST 18% - Standard Rate<br>GST 28% - Luxury Items<br>GST 40% - Sin Items</div>
+                        </div>
+                </div>
+    </section>
 
     <section class="contact" id="oanda_ecc" style="background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div>
@@ -3061,7 +3014,6 @@
           </div>
         </div>
       </div>
-    </section>
                 <script src="https://www.oanda.com/embedded/converter/get/b2FuZGFlY2N1c2VyLy9kZWZhdWx0/?lang=en"></script>
     </section>
 
