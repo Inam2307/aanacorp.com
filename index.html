@@ -370,12 +370,12 @@
         
         :root {
             --primary: #00011C;
-            --secondary: #D5B403;
-            --accent: #D5B403;
+            --secondary: #2BA8E2;
+            --accent: #000080;
+            --gold: #D5B403;
             --dark: #353535;
             --light: #ffffff;
             --gray: #bababa;
-            --social: #5A5A5A;
         }
         
         body {
@@ -430,7 +430,7 @@
         h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #065000;
+            color: #0F75BF;
             text-align: center;
             position: relative;
 	    text-decoration: overline underline;
@@ -1356,7 +1356,7 @@
         
         .service-icon {
             font-size: 2.5rem;
-            color: var(--secondary);
+            color: #0F75BF;
             margin-bottom: 1rem;
         }
         
@@ -1412,6 +1412,13 @@
             transform: translateY(-10px);
         }
 
+        .category-icon {
+            font-size: 3.5rem;
+            color: #2BA8E2 ;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
         .category-img {
             height: 180px;
             background-color: #D2D2D2;
@@ -1548,7 +1555,7 @@
 	.simple-search form {
 	    display: flex;
 	    border-radius: 25px;
-            border: 4px solid var(--secondary);
+            border: 4px solid var(--primary);
 	    overflow: hidden;
 	    background: white;
 	}
@@ -1584,10 +1591,11 @@
         }
 
         #oanda_ecc iframe {
-            border-radius: 15px;
+            border-radius: 50px;
             display: block;
-            width: 100% !important;
-            height: 200px !important;
+	    left: 65px;
+            width: 90% !important;
+            height: 400px !important;
         }
 
         .features {
@@ -2917,7 +2925,94 @@
         <div class="container">
             <h2>Our Product Categories</h2>
             <div class="categories-grid">
-                <!-- Category cards will be dynamically generated -->
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-mortar-pestle"></i>
+                    </div>
+                    <h3>Spice Powders</h3>
+                    <p style="text-align:justify">Turmeric, Red/Green Chilli, Coriander, Cummin, Fennel, Nigella, Kasuri Methi, Mustard Seed and other spice powders.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Diligent Spice Powders</h3>
+                    <p style="text-align:justify">Green/Black Cardamon, Black/White Pepper, Cinnamon, Asafoetida (Hing) and other spice powders & Bay Leaf, and Star Anise</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Superfood Powder</h3>
+                    <p style="text-align:justify">Nutrient-rich moringa leaf powder, Egg Powder, Foxnut Powder, Gram Powder(Sattu) and other powders.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-lemon"></i>
+                    </div>
+                    <h3>Fruit Powders</h3>
+                    <p style="text-align:justify">Mango, banana, Guava, Strawberry and more other fruit powders for culinary use.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-carrot"></i>
+                    </div>
+                    <h3>Vegetable Powders</h3>
+                    <p style="text-align:justify">Tomato, onion, ginger, Garlic, Basil and Mint powder & more...</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-blender"></i>
+                    </div>
+                    <h3>Custom Blends</h3>
+                    <p style="text-align:justify">Custom spice and food powder blends i.e. Garam Masala, Amchur & more...</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Flakes & Chips</h3>
+                    <p style="text-align:justify">Banana, Tomato, Onion, Ginger, Garlic & more...</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Whole Spices</h3>
+                    <p style="text-align:justify">Turmeric, Red/Green Chilli, Coriander, Cummin, Fennel, Nigella, Cardamon, Pepper, Cinnamon, and all other spices.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-wheat-awn"></i>
+                    </div>
+                    <h3>Flour Products</h3>
+                    <p style="text-align:justify">Cornflour, Ragi Flour, Sweet Potato, Taro etc.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Food Grains</h3>
+                    <p style="text-align:justify">Wheat, rice, corn, oats, barley, rye, millet</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <h3>Pulses</h3>
+                    <p style="text-align:justify">Lentils, beans, chickpeas, peas, pigeon peas, black lentils, green gram. etc.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -3009,7 +3104,7 @@
 
     <section class="contact" id="oanda_ecc" style="background-image: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
             <div>
-        	<h2 style="color: var(--accent); align-text:center; font-size: 2.3em"> 💰OANDA Currency Converter</h2>
+        	<h2>💰OANDA Currency Converter</h2>
 	    </div>
           </div>
         </div>
@@ -3057,7 +3152,7 @@
                 </div>
 
                 <div class="contact-form">
-                    <h3 style="color: var(--dark)">Send Us a Message</h3>
+                    <h3 style="color: #0F75BF; font-size:2rem">Send Us a Message</h3>
             <div class="contact-grid">
             <div class="contact-info">
                 <div class="contact-card">
@@ -4478,65 +4573,6 @@
             showSlide(currentSlide);
         }, 5000);
 
-        // Product categories data
-        const productCategories = [
-            {
-                title: "Spice Powders",
-                description: "Turmeric, Red/Green Chilli, Coriander, Cummin, Fennel, Nigella, Kasuri Methi, Mustard Seed and other spice powders",
-                icon: "fas fa-mortar-pestle"
-            },
-            {
-                title: "Diligent Spice Powders",
-                description: "Green/Black Cardamon, Black/White Pepper, Cinnamon, Asafoetida (Hing) and other spice powders & Bay Leaf, and Star Anise",
-                icon: "fas fa-seedling"
-            },
-            {
-                title: "Superfood Powder",
-                description: "Nutrient-rich moringa leaf powder, Egg Powder, Foxnut Powder, Gram Powder(Sattu) and other powders",
-                icon: "fas fa-apple-alt"
-            },
-            {
-                title: "Fruit Powders",
-                description: "Mango, banana, Guava, Strawberry and more other fruit powders for culinary use",
-                icon: "fas fa-lemon"
-            },
-            {
-                title: "Vegetable Powders",
-                description: "Tomato, onion, ginger, Garlic, Basil and Mint powder & more...",
-                icon: "fas fa-carrot"
-            },
-            {
-                title: "Custom Blends",
-                description: "Custom spice and food powder blends i.e. Garam Masala, Amchur & more...",
-                icon: "fas fa-blender"
-            },
-            {
-                title: "Flakes & Chips",
-                description: "Banana, Tomato, Onion, Ginger, Garlic & more...",
-                icon: "fas fa-layer-group"
-            },
-            {
-                title: "Whole Spices",
-                description: "Turmeric, Red/Green Chilli, Coriander, Cummin, Fennel, Nigella, Cardamon, Pepper, Cinnamon, and all other spices.",
-                icon: "fas fa-spa"
-            },
-            {
-                title: "Flour Products",
-                description: "Cornflour, Ragi Flour, Sweet Potato, Taro etc.",
-                icon: "fas fa-wheat-awn"
-            },
-            {
-                title: "Food Grains",
-                description: "Wheat, rice, corn, oats, barley, rye, millet",
-                icon: "fas fa-seedling"
-            },
-            {
-                title: "Pulses",
-                description: "Lentils, beans, chickpeas, peas, pigeon peas, black lentils, green gram. etc.",
-                icon: "fas fa-drumstick-bite"
-            }
-        ];
-
         // Google Drive API configuration
         const API_KEY = 'AIzaSyBl6p0-Bz7ZGJvEYcxVwWkZ9W8jbH3s5HY';
         const CLIENT_ID = '588056101412-ikf046hkpm5be7v6eo951m0h2fgc96oj.apps.googleusercontent.com';
@@ -4558,28 +4594,6 @@
             // Set up event listeners
             setupEventListeners();
         });
-
-        // Generate category cards dynamically
-        function generateCategoryCards() {
-            categoriesGrid.innerHTML = '';
-            
-            productCategories.forEach(category => {
-                const categoryCard = document.createElement('div');
-                categoryCard.className = 'category-card';
-                
-                categoryCard.innerHTML = `
-                    <div class="category-img">
-                        <i class="${category.icon}"></i>
-                    </div>
-                    <div class="category-content">
-                        <h3>${category.title}</h3>
-                        <p>${category.description}</p>
-                    </div>
-                `;
-                
-                categoriesGrid.appendChild(categoryCard);
-            });
-        }
 
         // Add export button for admin (hidden by default)
         function addAdminExportButton() {
@@ -4641,3 +4655,4 @@
     </script>
 </body>
 </html>
+				
